@@ -1,0 +1,36 @@
+body{
+    background-image: url("wallpaper.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#bottomShader{
+    height: 33vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(0, 0, 0));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#time{
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    font-size: 72px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#weather{
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+}
