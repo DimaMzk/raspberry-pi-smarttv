@@ -6,7 +6,10 @@ function weather() {
     async: true,
     crossDomain: true,
     url:
-      "https://api.openweathermap.org/data/2.5/weather?q=Victoria,ca&appid=[WEATHER_API]",
+    // [WEATHER_API] : Replace this with the API Key emailed to you
+    // [CITY_NAME] : Replace this with the nearest major city of residence ex. Victoria
+    // [COUNTY_CODE] : Replace with you country code ex. `ca` for Canada
+      "https://api.openweathermap.org/data/2.5/weather?q=[CITY_NAME],[COUNTRY_CODE]&appid=[WEATHER_API]",
     method: "GET"
   };
 
