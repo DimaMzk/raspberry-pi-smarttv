@@ -5,6 +5,16 @@ A project to elevate older tvs' to a newer standard.
 - Home Screen with slideshow of nice images
 - Live Weather, current time
 
+## Short Term Plans:
+- Apps Menu
+- Settings App
+
+## Long Term Plans:
+- Google Tasks Integration
+- Automated Setup
+- YouTube App
+- Some Form of Casting Support
+
 ## Setup:
 1. Download Latest Release
 2. Extract file to location of your choosing
