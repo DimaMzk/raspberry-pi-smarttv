@@ -1,0 +1,224 @@
+
+body{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    cursor: none;
+    color:white;
+}
+
+#background-image{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+}
+#bottomShader{
+    height: 33vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(0, 0, 0));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#time{
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    font-size: 72px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#weather{
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#weather-icon{
+    height: 100px;
+    position: absolute;
+    bottom: -15px;
+}
+
+.simple-keyboard{
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+/* KEYBOARD */
+.keyboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: #232323;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+    height: 35vh;
+}
+
+.keyboard--hidden {
+    bottom: -100%;
+}
+
+.keyboard__keys {
+    text-align: center;
+}
+
+.keyboard__key {
+    height: 62px;
+    width: 8%;
+    /* max-width: 139px; */
+    margin: 3px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1.05rem;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}
+
+.keyboard__key:active {
+    background: rgba(255, 255, 255, 0.12);
+}
+.keyboard__key--focused {
+    background: rgba(255, 255, 255, 0.055);
+    border: 2px solid lightblue;
+}
+
+.keyboard__key--wide {
+    width: 10%;
+}
+
+.keyboard__key--extra-wide {
+    width: 94%;
+    max-width: 50000000000px;
+}
+
+.keyboard__key--activatable::after {
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+    background: #08ff00;
+}
+
+.keyboard__key--dark {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+/* MENU */
+/* 
+#menu-container{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+#searchbox-container{
+    position: absolute;
+    top: 25px;
+    left: calc(50% - 300px);
+    width: 600px;
+    height: 50px;
+}
+.searchbox-input{
+    position: absolute;
+    height: 45px;
+    width: 500px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border: 2px grey solid;
+}
+.searchbox-button{
+    position: absolute;
+    right: 0;
+    width: 93px;
+    height: 51px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+#icons-container{
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    right: 100px;
+    top: 100px;
+    margin: auto;
+}
+.app-container{
+    width: 200px;
+    height: 235px;
+    padding: 20px;
+    display: inline-block;
+}
+.app-icon{
+    height: 200px;
+    width: 200px;
+    border-radius: 30px;
+    background-color: black;
+    
+    border: 2px black solid;
+    margin: calc(100%-2px);
+}
+.app-name{
+    height: 35px;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+}
+.no-app b{
+    visibility: hidden;
+}
+#settings-ico{
+    background-image: url("APPS/settings/settings.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.menu-item-focused{
+    border: 2px solid rgb(120, 255, 233);
+} */

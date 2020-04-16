@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+
+    <title>Document</title>
+  </head>
+  <body>
+    Hello. This page is temporarily horrible. It will be replaced with a pretty
+    one super duper soon... Hopefully.
+    <br />
+    <br />
+    Please Paste in your api key in the box below and tap / click submit
+    <input type="text" id="openweatherapi" />
+    <button id="submitBTN" onclick="registerapi();">submit</button>
+    <p id="under_message"></p>
+    <script>
+      function registerapi() {
+        $.ajax({
+          url: "../setweatherapikey/" + document.getElementById("openweatherapi").value,
+          success: function (result) {
+            console.log(result);
+            if (result == "true") {
+              console.log(result);
+              $("#under_message").html("Success! On the tv, submit an empty API key, to continue!<br><br>Not Sure How:<br>1. If there is no on screen keyboard, hit the OK or Enter key<br>2. Navigate to check key<br>3. hit OK or Enter")
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
