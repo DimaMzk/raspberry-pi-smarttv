@@ -38,3 +38,10 @@ A project to elevate older tvs' to a newer standard.
 - The IP address shown in the Weather API setup screen may be incorrect.
   - To get a correct IP address, in a terminal enter the command `ifconfig`
     - The correct address will usually start with `192.168.`. It will NOT start with `127`
+- The city selection screen will not stop a user from entering a non-existant city.
+  - For weather to work, make sure a matching city appears underneath the textbox.
+- Due to the on screen keyboard being english only characters, it iss not possible to enter some cities.
+  - If this is the case, enter an invalid city or leave it blank, and continue with the setup as normal, then:
+    - Before clicking `Let's Go!`; from the python folder goto: `web/main/json_files`
+    - open `userinformation.json` with a text-editor of your choice. In the city field, replace the value with your city of choice.
+    - You may now click `Let's Go!`
