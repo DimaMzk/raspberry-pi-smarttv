@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <script src="keyboard.js"></script>
+    <title>Welcome</title>
+    <style>
+      body {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        /*cursor: none;*/
+        font-family: 'Roboto', sans-serif;
+        color: white;
+      }
+
+      #background-image {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      #shader{
+        position: absolute;
+        z-index: 1;
+        top:0;
+        bottom:0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.808);
+      }
+      #left-side{
+        margin: 0;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 50%;
+        bottom: 0;
+        z-index: 2;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      #right-side{
+        margin: 0;
+        position: absolute;
+        top:0;
+        right: 0;
+        width: 50%;
+        bottom: 0;
+        z-index: 2;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .button{
+        background-color: rgba(12, 12, 12, 0.76);
+        border-radius: 3px;
+        padding: 8px;
+        font-size: xx-large;
+        text-align: center;
+        
+      }
+      #city-input-box, #weather-api-input-box{
+        font-size: xx-large;
+      }
+      .button-small{
+        font-size: large !important;
+      }
+      
+
+      .button-full-width{
+        width: 300px;
+      }
+      .button-selected{
+        border: 2px solid rgba(63, 63, 255, 0.842);
+        animation-name: btnselected;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+      }
+      
+
+      .button-selected-country{
+        padding: 16px;
+        width: 500px !important;
+      }
+      @keyframes btnselected {
+        from{
+          border: 2px solid rgba(63, 63, 255, 0.842);
+        }
+        to {
+          border: 2px solid rgba(1, 1, 253, 0.842);
+        }
+        
+      }
+      .button-other-country{
+        width: 400px;
+        font-size: large;
+        margin: auto;
+      }
+
+      .invisible {
+        visibility: hidden;
+      }
+
+      .faded{
+        font-weight: 400;
+        color:rgba(255, 255, 255, 0.562);
+      }
+
+
+
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+      }
+      
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff; 
+        border-bottom: 1px solid #d4d4d4; 
+      }
+      .autocomplete {
+        position: relative;
+        display: inline-block;
+      }
+
+
+
+      /* KEYBOARD */
+.keyboard {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  background: #232323;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  transition: bottom 0.4s;
+  height: 35vh;
+  z-index: 10;
+}
+
+.keyboard--hidden {
+  bottom: -100%;
+}
+
+.keyboard__keys {
+  text-align: center;
+}
+
+.keyboard__key {
+  height: 62px;
+  width: 8%;
+  /* max-width: 139px; */
+  margin: 3px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1.05rem;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.keyboard__key:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+.keyboard__key--focused {
+  background: rgba(255, 255, 255, 0.055);
+  border: 2px solid lightblue;
+}
+
+.keyboard__key--wide {
+  width: 10%;
+}
+
+.keyboard__key--extra-wide {
+  width: 94%;
+  max-width: 50000000000px;
+}
+
+.keyboard__key--activatable::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: #08ff00;
+}
+
+.keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+    </style>
+  </head>
+
+  <body id="body">
+    <div id="background-image"></div>
+    <div id="shader"></div>
+
+    <div id="left-side">
+        <div>
+          <h1>Welcome to Raspberry Pi Smart TV</h1>
+          <h3><code>Snapshot-3</code></h3>
+          <h4></h4>
+        </div>
+    </div>
+
+    <div id="right-side">
+      <div>
+        <div id="page-one-continue" class="button button-full-width button-selected" onclick="pageTwo();">Continue</div>
+      </div>
+    </div>
+
+
+    <script>
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Flat UI Pro 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Loading Bootstrap -->
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Loading Flat UI Pro -->
+    <link href="css/flat-ui-pro.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h5>Raspberry Pi Smart TV</h5>
+      <p class="lead">Setup</p>
+      <hr />
+      <div id="content">
+        <p>Please enter your API key from Open Weather:</p>
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              type="text"
+              placeholder="API KEY"
+              class="form-control"
+              id="APIKEYINPUT"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-wide" onclick="registerapi();">
+              Submit
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h6>Getting an API Key</h6>
+            <ol>
+              <li>
+                Go to the
+                <a href="https://openweathermap.org/price">Open Weather Map</a>
+                website, and register for a free account
+              </li>
+              <li>An API key will be emailed to you.</li>
+              <li>Enter the API key in the textbox above.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/video.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/flat-ui-pro.js"></script>
+    <script>
+      function registerapi() {
+        $.ajax({
+          url:
+            "../setweatherapikey/" +
+            document.getElementById("APIKEYINPUT").value,
+          success: function (result) {
+            console.log(result);
+            if (result == "true") {
+              console.log(result);
+              $("#content").html(
+                "<p class='text-success'>Success!</p><p><code>TODO: Redirect to Mobile Command Center</code>"
+              );
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
