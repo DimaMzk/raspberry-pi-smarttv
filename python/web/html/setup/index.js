@@ -16,7 +16,7 @@ function applyBackdrop() {
   var image = $("#background-image");
   image.fadeOut(1000, function () {
     image.css(
-      "background",
+      "background-image",
       'url("backdrops/' + prefix + randomInt + '.jpg")'
     );
     image.fadeIn(1000);
@@ -160,6 +160,20 @@ var cities = (function() {
   return cities;
 })();
 
+var deviceInformation = (function() {
+  var deviceInformation = null;
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': "device_information.json",
+    'dataType': "json",
+    'success': function(data) {
+      deviceInformation = data;
+    }
+  });
+  return deviceInformation;
+})();
+
 function doChange(){
   console.log("change");
   var inputBoxValue = document.getElementById("city-input-box").value;
@@ -182,13 +196,28 @@ function pageFour(){
     if(result == 'true'){
       console.log(result)
       document.addEventListener("keydown", pageFourListener);
-      $("#left-side").html("<div><h1>Open Weather API</h1><h2>Enter your Open Weather API Key</h2><p>Please goto <code>openweathermap.org/price</code>,<br /> and sign up for a free account to have an API key emailed to you.</p><p>Want to copy/paste the key?<br> On a phone connected to that same network as your Raspberry Pi,<br> navigate to <code>192.168.1.998:8081/setup/mobile</code></p></div>");
+      mobileCompleated = setInterval(checkMobileWeatherStatus, 1000);
+      $("#left-side").html("<div><h1>Open Weather API</h1><h2>Enter your Open Weather API Key</h2><p>Please goto <code>openweathermap.org/price</code>,<br /> and sign up for a free account to have an API key emailed to you.</p><p>Want to copy/paste the key?<br> On a phone connected to that same network as your Raspberry Pi,<br> navigate to <code>" + deviceInformation['ipaddress'] + ":8081/setup/mobile/index.html</code></p></div>");
       $("#right-side").html("<div><div class='autocomplete'><input type='text' name='weather-api-input-box' class='weather-api-input-box button-selected-country button-selected' id='weather-api-input-box'></div><div id='triggerPageFive' onclick='pageFive();'></div></div>");
       
     }
   }});
    //autocomplete(cities[currentSelectedCountry]);
   // Keyboard.open("weather-api-input-box","triggerPageFive", null);
+}
+
+function checkMobileWeatherStatus(){
+  $.ajax({url: "setmobilestatus/", success: function(result){
+    console.log("set mobstatus: " + result);
+    if(result == 'true'){
+      clearInterval(mobileCompleated);
+      document.removeEventListener("keydown", pageFourListener);
+      $("#left-side").html("<div><h1>All Set!</h1></div>");
+      $("#right-side").html("<div><div class=\"button button-full-width button-selected\">Let's Start</div></div>");
+      clearInterval(backdropInterval);
+      document.addEventListener("keydown", pageFiveListener);
+    }
+  }});
 }
 
 function pageFourListener(e){
@@ -201,9 +230,17 @@ function pageFourListener(e){
 }
 
 function pageFive(){
-  document.addEventListener("keydown", pageFiveListener);
-  $("#left-side").html("<div><h1>All Set!</h1></div>");
-  $("#right-side").html("<div><div class=\"button button-full-width button-selected\">Let's Start</div></div>");
+  
+  $.ajax({url: "setweatherapikey/" + document.getElementById("weather-api-input-box").value, success: function(result){
+    console.log(result);
+    if(result == 'true'){
+      $("#left-side").html("<div><h1>All Set!</h1></div>");
+      $("#right-side").html("<div><div class=\"button button-full-width button-selected\">Let's Start</div></div>");
+      clearInterval(backdropInterval);
+      document.addEventListener("keydown", pageFiveListener);
+    }
+  }});
+  
   
 }
 

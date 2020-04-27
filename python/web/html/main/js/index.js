@@ -258,7 +258,7 @@ function applyBackdrop() {
   console.log("Applying New Backdrop");
   var image = $("#background-image");
   image.fadeOut(1000, function() {
-    image.css("background", 'url("backdrops/' + prefix + randomInt + '.jpg")');
+    image.css("background-image", 'url("backdrops/' + prefix + randomInt + '.jpg")');
     image.fadeIn(1000);
   });
 }
