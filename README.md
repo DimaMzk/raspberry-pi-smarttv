@@ -18,7 +18,7 @@ A project to elevate older tvs' to a newer standard.
 2. Extract file to location of your choosing
 3. In a terminal, navigate to the `python` folder within the project files.
 4. Enter the command `pip3 install bottle`
-   - You may need to install python, with the following command: `sudo apt-get insall python3`
+   - You may need to install python, with the following command: `sudo apt-get install python3`
 5. Enter the command `python3 main.py`
 6. Open Chromium, and navigate to `http://127.0.0.1:8081/setup/index.html`
 7. Set to fullscreen
