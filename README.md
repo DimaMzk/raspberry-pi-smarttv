@@ -9,6 +9,7 @@ A project to elevate older tvs' to a newer standard.
 
 ## Currently In Development
 
+- Snapshot-3 Fixes
 - App Menu
 - Settings App
 
