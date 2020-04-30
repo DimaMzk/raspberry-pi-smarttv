@@ -12,12 +12,13 @@ dir_path = os.path.dirname(path)
 
 # Put Device Information to a JSON File
 hostname = socket.getfqdn()
-IPAddr = socket.gethostbyname(hostname)
-print(hostname + " - " + IPAddr)  # Get LOCAL device address
+IPAddr = [l for l in ([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1], [[(s.connect(('8.8.8.8', 53)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]]) if l][0][0]
+print("IP Address: - " + IPAddr)  # Get LOCAL device address
 device_information = {"ipaddress": IPAddr}
 with open(dir_path + '/web/html/setup/device_information.json', "w+",
           encoding="utf8") as f:
     json.dump(device_information, f, ensure_ascii=False)
+
 
 
 # @route('/setup')
