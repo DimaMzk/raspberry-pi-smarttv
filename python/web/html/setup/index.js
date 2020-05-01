@@ -149,7 +149,7 @@ function pageThree() {
     "<div><div class='autocomplete'><input type='text' name='city-input-box' class='city-input-box button-selected-country button-selected' id='city-input-box'></div><div id='bottom-half-countries'></div><div id='triggerPageFour' onclick='pageFour();'></div></div>"
   );
   //autocomplete(cities[currentSelectedCountry]);
-  Keyboard.open("city-input-box", "triggerPageFour", doChange);
+  Keyboard.open("city-input-box", "triggerPageFour", doChange, legalInput);
 }
 
 function pageThreeListener(e) {
@@ -191,12 +191,14 @@ var deviceInformation = (function () {
   return deviceInformation;
 })();
 
+// Global for city selection
+var prevMatchedCities = [];
 function doChange() {
   console.log("change");
   var inputBoxValue = document.getElementById("city-input-box").value;
   var results = 0;
   document.getElementById("bottom-half-countries").innerHTML = "";
-  var prevMatchedCities = [];
+  prevMatchedCities = [];
   for (var i = 0; i < cities[currentSelectedCountry].length; i++) {
     //console.log(inputBoxValue + " vs. " + cities[currentSelectedCountry][i].substring(0,inputBoxValue.length).toLowerCase());
     //console.log("inputbox vs substrings arr")
@@ -207,8 +209,8 @@ function doChange() {
           .substring(0, inputBoxValue.length)
           .toLowerCase()
     ) {
-      if (!prevMatchedCities.includes(cities[currentSelectedCountry][i])) {
-        prevMatchedCities.push(cities[currentSelectedCountry][i]);
+      if (!prevMatchedCities.includes((cities[currentSelectedCountry][i]).toLowerCase())) {
+        prevMatchedCities.push((cities[currentSelectedCountry][i]).toLowerCase());
         results++;
         console.log(cities[currentSelectedCountry][i]);
         document.getElementById("bottom-half-countries").innerHTML +=
@@ -220,7 +222,16 @@ function doChange() {
   }
 }
 
-function pageFour() {
+function legalInput(){
+  if(!prevMatchedCities.includes(document.getElementById("city-input-box").value.toLowerCase())){
+    document.getElementById("city-input-box").className = "city-input-box button-selected-country button-selected button-selected-error"
+    return false;
+  }
+  return true;
+}
+
+function pageFour() {  
+  
   $.ajax({
     url: "setcity/" + document.getElementById("city-input-box").value,
     success: function (result) {

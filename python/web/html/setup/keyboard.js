@@ -16,7 +16,8 @@ const Keyboard = {
         doneButton: "",
         inputBox: "",
         currentSelectedCoord: "",
-        keydownEvent: null
+        keydownEvent: null,
+        doneEvent: null
     },
     keyCoords: { // x y 
         "0,0": "1",
@@ -133,7 +134,7 @@ const Keyboard = {
                     keyElement.id = "backspace";
                     keyElement.addEventListener("click", () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
-                        document.getElementById(this.properties.inputBox).value = this.properties.value.substring(0, this.properties.value.length - 1);
+                        document.getElementById(this.properties.inputBox).value = this.properties.value;
                     });
 
                     break;
@@ -176,9 +177,13 @@ const Keyboard = {
                     keyElement.classList.add("keyboard__key--wide", "keyboard__key--dark");
                     keyElement.innerHTML = createIconHTML("check_circle");
                     keyElement.id = "done";
-                    keyElement.addEventListener("click", () => {
-                        document.getElementById(this.properties.doneButton).click();
-                        this.close();
+                    keyElement.addEventListener("click", () => {                        
+                        if(this.properties.doneEvent()){
+                            console.log("Legal Input, Closing Keyboard, and Clicking Done")
+                            document.getElementById(this.properties.doneButton).click();
+                            this.close();
+                        }
+                        
                         
                     });
 
@@ -226,12 +231,13 @@ const Keyboard = {
         }
     },
 
-    open(textBox, localDoneButton, keyEvent) { // KeyEvent is optional
+    open(textBox, localDoneButton, keyEvent, inputCheck) { // KeyEvent is optional
         this.properties.value = document.getElementById(textBox).value;
         this.properties.inputBox = textBox;
         this.properties.doneButton = localDoneButton;
         this.properties.currentSelectedCoord = "5,2";
         this.properties.keydownEvent = keyEvent;
+        this.properties.doneEvent = inputCheck;
         console.log("Keyboard Opening with following properties:\ninputBox: " + this.properties.inputBox + "\ndoneButton: " + this.properties.doneButton);
         this._setInputListener();
         this.elements.main.classList.remove("keyboard--hidden");

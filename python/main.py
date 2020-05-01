@@ -69,8 +69,8 @@ def setup_set_city(city):
 @route('/setup/setweatherapikey/<apikey>')
 def setup_set_weather_api_key(apikey):
     print("I will set the API Key to " + apikey)
-    if(apikey.strip().lower().replace(" ", "") == "done"):
-        return HTTPResponse(status=200, body="true")
+    if(apikey.strip().lower().replace(" ", "") == ""):
+        return HTTPResponse(status=200, body="false")
     try:
         print("Opening Prev Existing JSON Files")
         prev_existing_json_file = open(dir_path + '/web/html/main/json_files/userinformation.json', encoding="utf8")

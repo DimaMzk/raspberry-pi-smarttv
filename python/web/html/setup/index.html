@@ -101,6 +101,12 @@
         animation-direction: alternate;
         animation-timing-function: linear;
       }
+
+      .button-selected-error{
+        border: 2px solid rgba(236, 12, 12, 0.842);
+
+        animation-name: btnselectederr;
+      }
       
 
       .button-selected-country{
@@ -113,6 +119,16 @@
         }
         to {
           border: 2px solid rgba(1, 1, 253, 0.842);
+        }
+        
+      }
+
+      @keyframes btnselectederr {
+        from{
+          border: 2px solid rgba(236, 12, 12, 0.842);
+        }
+        to {
+          border: 2px solid rgba(128, 11, 11, 0.842);
         }
         
       }
@@ -248,7 +264,7 @@
     <div id="left-side">
         <div>
           <h1>Welcome to Raspberry Pi Smart TV</h1>
-          <h3><code>Snapshot-3</code></h3>
+          <h3><code>Snapshot-3.1</code></h3>
           <h4></h4>
         </div>
     </div>
