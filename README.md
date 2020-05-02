@@ -33,16 +33,8 @@ A project to elevate older tvs' to a newer standard.
 ![Country Select Screen](https://raw.githubusercontent.com/DimaMzk/raspberry-pi-smarttv/master/readme-images/sn-3-setup-c-select.png)
 ![All Set](https://raw.githubusercontent.com/DimaMzk/raspberry-pi-smarttv/master/readme-images/sn-3-setup-allset.png)
 
-#### Known Issues with Snapshot-3
+#### Known Issues with Snapshot-3.1
 
-- Bottle sometimes times out after pressing `Let's Start`, this should be fixed though
-- The IP address shown in the Weather API setup screen may be incorrect.
-  - To get a correct IP address, in a terminal enter the command `ifconfig`
-    - The correct address will usually start with `192.168.`. It will NOT start with `127`
-- The city selection screen will not stop a user from entering a non-existant city.
-  - For weather to work, make sure a matching city appears underneath the textbox.
-- The city selection screen will show duplicate cities while typing
-- The backspace button on the on screen keyboard, erases two characters.
 - Due to the on screen keyboard being english only characters, it iss not possible to enter some cities.
   - If this is the case, enter an invalid city or leave it blank, and continue with the setup as normal, then:
     - Before clicking `Let's Go!`; from the python folder goto: `web/main/json_files`
